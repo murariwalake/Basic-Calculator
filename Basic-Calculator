@@ -1,0 +1,49 @@
+<html>
+<head>
+	<style>
+		#calc{width:300px;height:250px, align:center;}
+		#btn{width:100%;height:40px;font-size:20px;}
+	</style>
+</head>
+
+<body >
+<h2>Simple Calculator</h2>
+
+<form Name="calc" >
+<table id="calc" border=0>
+
+	<thead>
+		<th colspan=5><input id="btn" name="display"  type="text"></th>
+	</thead>
+
+	<tbody id="demo"></tbody>
+	
+	<tfoot>
+		<td colspan=5><input id="btn" type=button value="=" OnClick="calc.display.value=eval(calc.display.value)"></td>
+	</tfoot>
+</table>
+</form>
+
+<script>
+var text = "";
+var charrecters = [["1", "2", "3", "+",],
+			["4", "5", "6", "-",],
+			["7", "8", "9", "*",],
+			["0", ".", "Del", "/",]];
+
+for (i=0; i < 4; i++) {
+	text += "<tr>";
+  for (j=0; j < 4; j++) {
+	if(i==3 && j==2){
+		text = text + "<td><input id=\"btn\" type=\"button\" value='"+charrecters[i][j]+"' OnClick=\"calc.display.value=''\"></td>";
+	}else{
+		text = text + "<td><input id=\"btn\" type=\"button\" value='"+charrecters[i][j]+"' OnClick=\"calc.display.value+='"+charrecters[i][j]+"'\"></td>";
+	}	
+ }
+ text += "</tr>";
+}
+document.getElementById("demo").innerHTML = text;
+</script>
+
+</body>
+</html>
